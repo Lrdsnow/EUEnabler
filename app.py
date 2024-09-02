@@ -1,4 +1,4 @@
-import restore
+from restore import restore_file
 from pathlib import Path
 import plistlib
 
