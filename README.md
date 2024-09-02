@@ -1,7 +1,9 @@
-how to use:
-- install `pymobiledevice3`
-- run `app.py`
+# EU Enabler
 
-requires python 3.12
-
-only works in the US for rn
+## How to use
+1. ensure and install python3 and git if you do not have it
+2. open a terminal and run `git clone https://github.com/Lrdsnow/EUEnabler.git`
+3. run `cd EUEnabler`
+4. run `python3 -m pip install pymobiledevice3` if it is not installed
+5. run `python3 app.py`
+6. follow the instructions and enjoy!
