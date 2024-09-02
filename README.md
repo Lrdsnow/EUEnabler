@@ -7,5 +7,6 @@
 2. open a terminal and run `git clone https://github.com/Lrdsnow/EUEnabler.git`
 3. run `cd EUEnabler`
 4. run `python3 -m pip install pymobiledevice3` if it is not installed
-5. run `python3 app.py`
-6. follow the instructions and enjoy!
+5. plug your iphone/ipad into your pc/mac
+6. run `python3 app.py`
+7. follow the instructions and enjoy!
