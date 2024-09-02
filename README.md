@@ -1,5 +1,7 @@
 # EU Enabler
 
+## IF IT DOES NOT WORK THE FIRST TIME IT WILL NOT WORK FOR YOU
+
 ## How to use
 1. ensure and install python3 and git if you do not have it
 2. open a terminal and run `git clone https://github.com/Lrdsnow/EUEnabler.git`
