@@ -12,3 +12,6 @@
 7. run `python3 app.py`
 8. follow the instructions and enjoy!
 - Credit to @leminlimez and @JJTech0130 for the exploit
+
+### Disclaimer
+This project is intended for educational purposes only. The code provided in this repository is designed to demonstrate the concepts of software exploitation and system vulnerabilities within a controlled, legal, and ethical environment.
