@@ -22,5 +22,6 @@ restore_file(fp=file_path, restore_path='/var/db/os_eligibility/', restore_name=
 file_path = Path.joinpath(Path.cwd(), 'Config.plist')
 replace_region_code(file_path, original_code="US", new_code=region_code)
 restore_file(fp=file_path, restore_path='/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/', restore_name='Config.plist')
+restore_file(fp=file_path, restore_path='/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/', restore_name='Config.plist')
 
 print("Reboot to see changes!")
