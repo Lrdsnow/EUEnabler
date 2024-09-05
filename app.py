@@ -2,7 +2,7 @@ from exploit.restore import restore_file
 from pathlib import Path
 import plistlib
 
-region_code = input("Enter your 2-letter region code (default to US): ").strip().upper() or "US"
+region_code = input("Enter YOUR 2-letter region code (default to US): ").strip().upper() or "US"
 method = int(input("Choose a method, 1 or 2:")) or 1
 
 def replace_region_code(plist_path, original_code="US", new_code="US"):
