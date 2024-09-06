@@ -63,6 +63,8 @@ except PyMobileDevice3Exception as e:
     if "Find My" in str(e):
         print("Find My must be disabled in order to use this tool.")
         print("Disable Find My from Settings (Settings -> [Your Name] -> Find My) and then try again.")
+    if "File Exists" in str(e):
+        print("It seems you tried to run this again without rebooting, please reboot before trying again.")
     elif "crash_on_purpose" not in str(e):
         raise e
     else:
