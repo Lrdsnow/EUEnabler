@@ -10,7 +10,7 @@ from tempfile import TemporaryDirectory
 import plistlib
 import traceback
 
-region_code = input("Enter YOUR 2-letter region code (default to US): ").strip().upper() or "US"
+region_code = input("Enter YOUR CURRENT 2-letter region code (default to US): ").strip().upper() or "US"
 method = int(input("Choose a method, 1 or 2: ") or "1") or 1
 print("Please wait...")
 

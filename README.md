@@ -10,13 +10,17 @@
 5. run `python3 -m pip install pymobiledevice3` if it is not installed
 6. plug your iphone/ipad into your pc/mac, and disable find my phone if its enabled
 7. run `python3 app.py`
-8. enter YOUR 2-letter region code (ex. if you are in the US enter US)
+8. enter YOUR CURRENT 2-letter region code (ex. if you are in the US enter US)
 9. first use method 1, if that doesnt work, try method 2
 10. follow the instructions on screen
 11. reboot and continue with partial setup
 12. if it asks about icloud hit "customize"
 13. install your favorite EU Marketplace from safari and profit!
 - Credit to @leminlimez and @JJTech0130 for the exploit
+
+### Notes:
+- if it doesnt work the first time it wont work until there is an update
+- if you have attempted to change your country in the past or have mismatched regions on your phone (ex. us wifi but german icloud) it will NOT work everything needs to be set to YOUR CURRENT country (aka YOUR LOCATION)
 
 ### Disclaimer
 This project is intended for educational purposes only. The code provided in this repository is designed to demonstrate the concepts of software exploitation and system vulnerabilities within a controlled, legal, and ethical environment.
