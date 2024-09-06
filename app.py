@@ -66,7 +66,7 @@ except PyMobileDevice3Exception as e:
     elif "crash_on_purpose" not in str(e):
         raise e
     else:
-        print("Applied, Please reboot to see changes!")
+        print("Successfully applied! (you should not need to reboot to see changes)")
 except Exception as e:
     print(traceback.format_exc())
 finally:
