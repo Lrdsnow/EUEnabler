@@ -65,6 +65,8 @@ except PyMobileDevice3Exception as e:
         print("Disable Find My from Settings (Settings -> [Your Name] -> Find My) and then try again.")
     if "File Exists" in str(e):
         print("It seems you tried to run this again without rebooting, please reboot before trying again.")
+    if "link error" in str(e):
+        print("A Fatal Error occurred, reboot and try again")
     elif "crash_on_purpose" not in str(e):
         raise e
     else:
