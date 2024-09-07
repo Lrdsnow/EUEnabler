@@ -66,7 +66,7 @@ except PyMobileDevice3Exception as e:
     if "File Exists" in str(e):
         print("It seems you tried to run this again without rebooting, please reboot before trying again.")
     if "link error" in str(e):
-        print("A Fatal Error occurred, this is not an error with the script, please do not ask for support for this error")
+        print("Failed to connect to device, if you are on windows ensure you dont have any app made by apple installed from the microsoft store and ensure your device is recognized by itunes")
     elif "crash_on_purpose" not in str(e):
         raise e
     else:
