@@ -11,7 +11,6 @@ import plistlib
 import traceback
 
 region_code = input("Enter YOUR CURRENT 2-letter region code (default to US): ").strip().upper() or "US"
-method = int(input("Choose a method, 1 or 2: ") or "1") or 1
 print("Please wait...")
 
 def replace_region_code(plist_path, original_code="US", new_code="US"):
@@ -28,34 +27,32 @@ def replace_region_code(plist_path, original_code="US", new_code="US"):
 
 file_path = Path.joinpath(Path.cwd(), 'eligibility.plist')
 eligibility_data = replace_region_code(file_path, original_code="US", new_code=region_code)
+file_path = Path.joinpath(Path.cwd(), 'Config.plist')
+config_data = replace_region_code(file_path, original_code="US", new_code=region_code)
 
 files_to_restore = [
     FileToRestore(
         contents=eligibility_data,
         restore_path="/var/db/os_eligibility/",
         restore_name="eligibility.plist"
+    ),
+    FileToRestore(
+        contents=config_data,
+        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/",
+        restore_name="Config.plist"
+    ),
+    FileToRestore(
+        contents=config_data,
+        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/",
+        restore_name="Config.plist"
+    ),
+    FileToRestore(
+        contents=config_data,
+        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/250df115a1385cfaad96b5e3bf2a0053a9efed0f.asset/AssetData/",
+        restore_name="Config.plist"
     )
 ]
-
-file_path = Path.joinpath(Path.cwd(), 'Config.plist')
-config_data = replace_region_code(file_path, original_code="US", new_code=region_code)
-if method == 1:
-    files_to_restore.append(
-        FileToRestore(
-            contents=config_data,
-            restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/",
-            restore_name="Config.plist"
-        )
-    )
-elif method == 2:
-    files_to_restore.append(
-        FileToRestore(
-            contents=config_data,
-            restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/",
-            restore_name="Config.plist"
-        )
-    )
-
+    
 # taken from nugget
 try:
     restore_files(files=files_to_restore)
