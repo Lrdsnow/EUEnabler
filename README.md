@@ -5,10 +5,10 @@
 1. ensure and install [python 3.12](https://www.python.org/downloads/release/python-3125/) and [git](https://git-scm.com/downloads) if you do not have it, and ensure they are both in path
 2. open a terminal, please use cmd if on windows
 3. run `git clone https://github.com/nightfallenxyz/EUEnabler-ASH`
-4. run `cd EUEnabler`
-5. run `python3 -m pip install pymobiledevice3` if it is not installed
+4. run `cd EUEnabler-ASH`
+5. run `pip install pymobiledevice3` if it is not installed
 6. plug your iphone/ipad into your pc/mac, and disable find my phone if its enabled (you can turn it back on when its done, its just for the restore)
-7. run `python3 app.py`
+7. run `python app.py`
 10. follow the instructions on screen
 11. reboot and continue with partial setup
 12. if it asks about icloud hit "customize"
