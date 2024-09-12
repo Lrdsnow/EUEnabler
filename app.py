@@ -23,6 +23,21 @@ def replace_region_code(plist_path, original_code="US", new_code="US"):
 
     return plistlib.dumps(updated_plist_data)
 
+# Function to handle file restoration
+def restore(files, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            restore_files(files=files)
+            break  # Exit loop on success
+        except ConnectionAbortedError:
+            print(f"Connection aborted, retrying... ({attempt + 1}/{max_retries})")
+            sleep(2)  # Pause before retrying
+        except PyMobileDevice3Exception as e:
+            handle_pymobiledevice_exception(e)
+            break
+        except Exception as e:
+            print(traceback.format_exc())
+            break
 
 # Exception handling for PyMobileDevice3 exceptions
 def handle_pymobiledevice_exception(e):
@@ -109,21 +124,20 @@ choice = prompt_for_action()
 
 try:
     if choice == '1':
-        restore_files(files=files_to_restore_empty) 
+        restore(files_to_restore_empty)
         print("Reboot the device now.")
         input("Press Enter after rebooting...")
     elif choice == '2':
         print("You need to restore with empty files first before applying patches.")
         print("Reboot the device before proceeding.")
-        input("Press Enter after rebooting and restoring with empty files...")
-        restore_files(files=files_to_restore_patches)
+        restore(files_to_restore_patches)
         print("Reboot the device now.")
         input("Press Enter after rebooting...")
     elif choice == '3':
-        restore_files(files=files_to_restore_empty)  # First restore with empty files
+        restore(files_to_restore_empty)  # First restore with empty files
         print("Reboot the device now.")
         input("Press Enter after rebooting...")
-        restore_files(files=files_to_restore_patches)  # Then restore with patches
+        restore(files_to_restore_patches)  # Then restore with patches
         print("Reboot the device now.")
         input("Press Enter after rebooting...")
     else:
