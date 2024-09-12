@@ -10,8 +10,6 @@
 5. run `python3 -m pip install pymobiledevice3` if it is not installed
 6. plug your iphone/ipad into your pc/mac, and disable find my phone if its enabled (you can turn it back on when its done, its just for the restore)
 7. run `python3 app.py`
-8. enter YOUR CURRENT 2-letter region code (ex. if you are in the US enter US)
-9. first use method 1, if that doesnt work, try method 2
 10. follow the instructions on screen
 11. reboot and continue with partial setup
 12. if it asks about icloud hit "customize"
