@@ -48,14 +48,14 @@ except PyMobileDevice3Exception as e:
     if "Find My" in str(e):
         print("Find My must be disabled in order to use this tool.")
         print("Disable Find My from Settings (Settings -> [Your Name] -> Find My) and then try again.")
-    if "File Exists" in str(e):
+    if "File exists" in str(e):
         print("It seems you tried to run this again without rebooting, please reboot before trying again.")
     #if "link error" in str(e):
         #print("Failed to connect to device, if you are on windows ensure you dont have any app made by apple installed from the microsoft store and ensure your device is recognized by itunes")
     elif "crash_on_purpose" not in str(e):
         raise e
     else:
-        print("Successfully applied! (you should not need to reboot to see changes)")
+        print("Successfully applied! Reboot to see changes")
 except Exception as e:
     print(traceback.format_exc())
 finally:
