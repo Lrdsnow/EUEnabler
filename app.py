@@ -27,29 +27,14 @@ def replace_region_code(plist_path, original_code="US", new_code="US"):
 def restore(files, max_retries=3):
     for attempt in range(max_retries):
         try:
-            restore_files(files=files)
+            restore_files(files=files, reboot=True)
             break  # Exit loop on success
         except ConnectionAbortedError:
             print(f"Connection aborted, retrying... ({attempt + 1}/{max_retries})")
             sleep(2)  # Pause before retrying
-        except PyMobileDevice3Exception as e:
-            handle_pymobiledevice_exception(e)
-            break
         except Exception as e:
             print(traceback.format_exc())
             break
-
-# Exception handling for PyMobileDevice3 exceptions
-def handle_pymobiledevice_exception(e):
-    if "Find My" in str(e):
-        print("Find My must be disabled to use this tool.")
-        print("Disable Find My from Settings (Settings -> [Your Name] -> Find My) and try again.")
-    elif "File Exists" in str(e):
-        print("File already exists at the specified path. Consider removing or overwriting it before retrying.")
-    elif "crash_on_purpose" not in str(e):
-        raise e
-    else:
-        print("Successfully applied! (you should not need to reboot to see changes)")
 
 # Function to prompt the user for an action
 def prompt_for_action():
@@ -125,21 +110,15 @@ choice = prompt_for_action()
 try:
     if choice == '1':
         restore(files_to_restore_empty)
-        print("Reboot the device now.")
-        input("Press Enter after rebooting...")
     elif choice == '2':
         print("You need to restore with empty files first before applying patches.")
-        print("Reboot the device before proceeding.")
+        input("Press enter if you ran method 1 before...")
         restore(files_to_restore_patches)
-        print("Reboot the device now.")
-        input("Press Enter after rebooting...")
     elif choice == '3':
         restore(files_to_restore_empty)  # First restore with empty files
-        print("Reboot the device now.")
-        input("Press Enter after rebooting...")
+        input("Press Enter after rebooting and unlocking...")
         restore(files_to_restore_patches)  # Then restore with patches
-        print("Reboot the device now.")
-        input("Press Enter after rebooting...")
+        input("Press Enter after rebooting and unlocking...")
     else:
         print("Invalid choice. Please select 1, 2, or 3.")
 except Exception as e:
