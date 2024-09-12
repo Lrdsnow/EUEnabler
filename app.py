@@ -28,6 +28,16 @@ files_to_restore = [
         contents=config_data,
         restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/",
         restore_name="Config.plist"
+    ),
+    FileToRestore(
+        contents=config_data,
+        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/",
+        restore_name="Config.plist"
+    ),
+    FileToRestore(
+        contents=config_data,
+        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/250df115a1385cfaad96b5e3bf2a0053a9efed0f.asset/AssetData/",
+        restore_name="Config.plist"
     )
 ]
     
