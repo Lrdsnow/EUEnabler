@@ -1,62 +1,31 @@
-from exploit.restore import restore_files, FileToRestore, restore_file
+from backend.funcs import get_content, prompt, retrieve_restore_files
+from exploit.restore import restore_files
 
-from pymobiledevice3.exceptions import PyMobileDevice3Exception
-from pymobiledevice3.services.diagnostics import DiagnosticsService
-from pymobiledevice3 import usbmux
-from pymobiledevice3.lockdown import create_using_usbmux
+print("Initializing...")
 
-from pathlib import Path
-from tempfile import TemporaryDirectory
-import traceback
+# initializing variables
 
-print("Please wait...")
+config_data = get_content('Config.plist')
+eligibility_data = get_content('eligibility.plist')
 
-file_path = Path.joinpath(Path.cwd(), 'eligibility.plist')
-with open(file_path, 'rb') as file:
-    eligibility_data = file.read()
-file_path = Path.joinpath(Path.cwd(), 'Config.plist')
-with open(file_path, 'rb') as file:
-    config_data = file.read()
+files_to_restore_empty = retrieve_restore_files(False)
+files_to_restore = retrieve_restore_files(True, eligibility_data, config_data)
 
-files_to_restore = [
-    FileToRestore(
-        contents=eligibility_data,
-        restore_path="/var/db/os_eligibility/",
-        restore_name="eligibility.plist"
-    ),
-    FileToRestore(
-        contents=config_data,
-        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/",
-        restore_name="Config.plist"
-    ),
-    FileToRestore(
-        contents=config_data,
-        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/",
-        restore_name="Config.plist"
-    ),
-    FileToRestore(
-        contents=config_data,
-        restore_path="/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/250df115a1385cfaad96b5e3bf2a0053a9efed0f.asset/AssetData/",
-        restore_name="Config.plist"
-    )
+prompt_options = [
+    "1. Restore files with no data",
+    "2. Apply eligibility and config patches",
+    "3. Restore files with no data and apply patches"
 ]
-    
-# taken from nugget
+
+choice = prompt(prompt_options)
+
+switcher = {
+    '1': lambda: restore_files(files_to_restore_empty, reboot=True),
+    '2': lambda: (input("Press Enter after running method 1..."), restore_files(files_to_restore, reboot=True)),
+    '3': lambda: (restore_files(files_to_restore_empty, reboot=True), input("Press Enter after rebooting and unlocking..."), restore_files(files_to_restore, reboot=True))
+}
+
 try:
-    restore_files(files=files_to_restore)
-except PyMobileDevice3Exception as e:
-    if "Find My" in str(e):
-        print("Find My must be disabled in order to use this tool.")
-        print("Disable Find My from Settings (Settings -> [Your Name] -> Find My) and then try again.")
-    if "File exists" in str(e):
-        print("It seems you tried to run this again without rebooting your phone, please reboot before trying again.")
-    #if "link error" in str(e):
-        #print("Failed to connect to device, if you are on windows ensure you dont have any app made by apple installed from the microsoft store and ensure your device is recognized by itunes")
-    elif "crash_on_purpose" not in str(e):
-        raise e
-    else:
-        print("Successfully applied! Reboot to see changes")
+    switcher.get(choice, lambda: print("Invalid choice. Please select 1, 2, or 3."))()
 except Exception as e:
-    print(traceback.format_exc())
-finally:
-    input("Press Enter to exit...")
+    print(f"An error occurred: {e}")
