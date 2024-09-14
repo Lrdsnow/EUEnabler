@@ -1,5 +1,6 @@
 from backend.funcs import get_content, prompt, retrieve_restore_files
 from exploit.restore import restore_files
+from time import sleep
 
 print("Initializing...")
 
@@ -14,7 +15,8 @@ files_to_restore = retrieve_restore_files(True, eligibility_data, config_data)
 prompt_options = [
     "1. Restore files with no data",
     "2. Apply eligibility and config patches",
-    "3. Restore files with no data and apply patches"
+    "3. Restore files with no data and apply patches",
+    "4. Automated eligibility and config patch spam"
 ]
 
 choice = prompt(prompt_options)
@@ -26,6 +28,14 @@ switcher = {
 }
 
 try:
-    switcher.get(choice, lambda: print("Invalid choice. Please select 1, 2, or 3."))()
+    if choice != 4:
+        switcher.get(choice, lambda: print("Invalid choice. Please select 1, 2, or 3."))()
+    else:
+        while True:
+            restore_files(files_to_restore, reboot=True)
+            sleep(30)
+            restore_files(files_to_restore_empty, reboot=True)
+            sleep(30)
+
 except Exception as e:
     print(f"An error occurred: {e}")

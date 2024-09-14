@@ -11,7 +11,7 @@ def get_content(file_path):
 def prompt(options):
     print("Select an option:")
     print("\n".join(options))
-    choice = input("Enter your choice: ").strip()
+    choice = int(input("Enter your choice: "))
     return choice
 
 def retrieve_restore_files(data, eligibility_data=None, config_data=None):
