@@ -1,4 +1,5 @@
 # EU Enabler
+### A Proof Of Concept EU Feature enabler for outside of the EU
 
 ## IF IT DOES NOT WORK THE FIRST TIME IT WILL NOT WORK FOR YOU
 
@@ -17,7 +18,7 @@
 - Credit to @leminlimez and @JJTech0130 for the exploit
 
 ### Notes:
-- if it doesnt work the first time it wont work until there is an update
+- if it doesnt work the first time it wont work for you, success rates are not device or version dependant.
 - if you have attempted to change your country in the past or have mismatched regions on your phone (ex. us wifi but german icloud) it will NOT work everything needs to be set to YOUR CURRENT country (aka YOUR LOCATION)
 - Support Discord Link: https://discord.gg/3wecrH9CXj
 
