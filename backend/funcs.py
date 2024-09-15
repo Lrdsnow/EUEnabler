@@ -1,12 +1,4 @@
 from exploit.restore import FileToRestore
-from pathlib import Path
-
-def get_content(file_path):
-    file_path = Path.joinpath(Path.cwd(), file_path)
-    with open(file_path, 'rb') as file:
-        file_data = file.read()
-    print(f'Retrieved {file_path} content')
-    return file_data
 
 def prompt(options):
     print("Select an option:")
