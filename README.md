@@ -1,4 +1,5 @@
 # EU Enabler (ashs version)
+ # support server [server](https://discord.gg/ZcYMpb5Pee)
 
 
 ## How to use
