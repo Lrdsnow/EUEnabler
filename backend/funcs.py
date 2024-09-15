@@ -11,14 +11,15 @@ def get_content(file_path):
 def prompt(options):
     print("Select an option:")
     print("\n".join(options))
-    choice = int(input("Enter your choice: "))
+    choice = input("Enter your choice: ")
     return choice
 
 def retrieve_restore_files(data, eligibility_data=None, config_data=None):
     restore_paths = [
         "/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/c55a421c053e10233e5bfc15c42fa6230e5639a9.asset/AssetData/",
         "/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/247556c634fc4cc4fd742f1b33af9abf194a986e.asset/AssetData/",
-        "/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/250df115a1385cfaad96b5e3bf2a0053a9efed0f.asset/AssetData/"
+        "/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/250df115a1385cfaad96b5e3bf2a0053a9efed0f.asset/AssetData/",
+        "/var/MobileAsset/AssetsV2/com_apple_MobileAsset_OSEligibility/purpose_auto/2522c67bd46ddbd1bbadeb7c06bfdf77ddf7cc25.asset/AssetData/"
     ]
 
     if data == False:

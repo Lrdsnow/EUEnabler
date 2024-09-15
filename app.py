@@ -1,16 +1,9 @@
-from backend.funcs import get_content, prompt, retrieve_restore_files
-from exploit.restore import restore_files
-from time import sleep
+from backend.device_manager import DeviceManager
+from backend.funcs import prompt
+from pymobiledevice3 import usbmux
+from tweak.eligibility import EUTweak
 
 print("Initializing...")
-
-# initializing variables
-
-config_data = get_content('Config.plist')
-eligibility_data = get_content('eligibility.plist')
-
-files_to_restore_empty = retrieve_restore_files(False)
-files_to_restore = retrieve_restore_files(True, eligibility_data, config_data)
 
 prompt_options = [
     "1. Restore files with no data",
@@ -19,23 +12,8 @@ prompt_options = [
     "4. Automated eligibility and config patch spam"
 ]
 
-choice = prompt(prompt_options)
+dev_manager = DeviceManager()
+dev_manager.set_device(device=0)
 
-switcher = {
-    '1': lambda: restore_files(files_to_restore_empty, reboot=True),
-    '2': lambda: (input("Press Enter after running method 1..."), restore_files(files_to_restore, reboot=True)),
-    '3': lambda: (restore_files(files_to_restore_empty, reboot=True), input("Press Enter after rebooting and unlocking..."), restore_files(files_to_restore, reboot=True))
-}
-
-try:
-    if choice != 4:
-        switcher.get(choice, lambda: print("Invalid choice. Please select 1, 2, or 3."))()
-    else:
-        while True:
-            restore_files(files_to_restore, reboot=True)
-            sleep(30)
-            restore_files(files_to_restore_empty, reboot=True)
-            sleep(30)
-
-except Exception as e:
-    print(f"An error occurred: {e}")
+tweak = EUTweak(prompt(prompt_options))
+tweak.apply(lockdown=dev_manager.device.get("ld"))
