@@ -8,11 +8,15 @@ class EUTweak:
         self.method = method
 
     def setup_variables(self, lockdown=None):
-        self.config_data = get_content("tweak/files/Config.plist")
-        self.eligibility_data = get_content("tweak/files/eligibility.plist")
+        file_path = Path.joinpath(Path.cwd(), 'tweak/files/eligibility.plist')
+        with open(file_path, 'rb') as file:
+            self.eligibility_data = file.read()
+        file_path = Path.joinpath(Path.cwd(), 'tweak/files/Config.plist')
+        with open(file_path, 'rb') as file:
+            self.config_data = file.read()
 
-        self.files_to_restore_empty = retrieve_restore_files(False)
-        self.files_to_restore = retrieve_restore_files(True, self.eligibility_data, self.config_data)
+        self.files_to_restore_empty = retrieve_restore_files(b'', b'')
+        self.files_to_restore = retrieve_restore_files(self.eligibility_data, self.config_data)
 
         self.switcher = {
             "1": lambda: restore_files(self.files_to_restore_empty, reboot=True, lockdown_client=lockdown),
