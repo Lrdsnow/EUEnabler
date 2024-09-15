@@ -1,5 +1,6 @@
 from backend.funcs import get_content, prompt, retrieve_restore_files
 from exploit.restore import restore_files
+from pathlib import Path
 from pymobiledevice3.exceptions import PyMobileDevice3Exception
 from time import sleep
 
