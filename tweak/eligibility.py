@@ -5,7 +5,10 @@ from pymobiledevice3.exceptions import PyMobileDevice3Exception
 from time import sleep
 
 class EUTweak:
-    def __init__(self, method="1"):
+    def __init__(self, method="2"):
+        self.set_method(method)
+
+    def set_method(self, method):
         self.method = method
 
     def setup_variables(self, lockdown=None):
@@ -26,7 +29,7 @@ class EUTweak:
         }
 
     def apply(self, lockdown=None):
-        self.setup_variables()
+        self.setup_variables(lockdown=lockdown)
         try:
             if self.method != "4":
                 self.switcher.get(self.method, lambda: print("Invalid choice. Please select 1, 2, or 3."))()

@@ -1,14 +1,16 @@
+from backend.device_manager import DeviceManager
 from backend.mainwindow import MainWindow
 from PySide6.QtWidgets import QApplication
 import sys
+from tweak.eligibility import EUTweak
 
 if __name__ == "__main__":
-    # Create the Qt Application
     app = QApplication(sys.argv)
 
-    # Create and show the main window
-    window = MainWindow()
+    dev_manager = DeviceManager()
+    tweak = EUTweak()
+
+    window = MainWindow(dev_manager, tweak)
     window.show()
 
-    # Run the application's event loop
     sys.exit(app.exec())

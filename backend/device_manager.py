@@ -5,7 +5,8 @@ class DeviceManager:
     def __init__(self):
         self.devices = []
         self.get_devices()
-        self.set_device(device=0)
+        if len(self.devices) != 0:
+            self.set_device(device=0)
 
     def get_devices(self):
         self.devices.clear()
