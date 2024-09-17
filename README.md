@@ -17,6 +17,11 @@
 - Credit to @leminlimez and @JJTech0130 for the exploit
 - Credit to @lrdsnow for the base
 
+- ##Common errors
+- Python not installed, replace python3 with python or vice versa
+- DeviceNotConnected, bad cable or cable not plugged in
+- lockdown, unlock iphone/ipad
+
 ### Notes:
 - if it doesnt work the first time it wont work for you, success rates are not device or version dependant.
 - if you have attempted to change your country in the past or have mismatched regions on your phone (ex. us wifi but german icloud) it will NOT work everything needs to be set to YOUR CURRENT country (aka YOUR LOCATION)
