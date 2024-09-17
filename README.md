@@ -1,11 +1,11 @@
-# EU Enabler
+ # EU Enabler
 
 ## IF IT DOES NOT WORK THE FIRST TIME IT WILL NOT WORK FOR YOU
 
 ## How to use
 1. ensure and install [python 3.12](https://www.python.org/downloads/release/python-3125/) and [git](https://git-scm.com/downloads) if you do not have it, and ensure they are both in path
 2. open a terminal, please use cmd if on windows
-3. run `git clone https://github.com/Lrdsnow/EUEnabler.git`
+3. run `git clone https://github.com/Lrdsnow/EUEnabler.git -b mlg's-rewrite`
 4. run `cd EUEnabler`
 5. run `python3 -m pip install pymobiledevice3` if it is not installed
 6. plug your iphone/ipad into your pc/mac, and disable find my phone if its enabled (you can turn it back on when its done, its just for the restore)
