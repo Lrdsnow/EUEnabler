@@ -15,7 +15,8 @@
 12. if it asks about icloud hit "customize"
 13. install your favorite EU Marketplace from safari and profit!
 - Credit to @leminlimez and @JJTech0130 for the exploit
-- Credit to @lrdsnow for the base
+ 
+
 
 - ##Common errors
 - Python not installed, replace python3 with python or vice versa
