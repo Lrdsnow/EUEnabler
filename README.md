@@ -1,6 +1,5 @@
 # EU Enabler
 ### A Proof Of Concept EU Feature enabler for outside of the EU
->>>>>>> main
 
 
 ## How to use
