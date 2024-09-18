@@ -15,6 +15,8 @@
 12. if it asks about icloud hit "customize"
 13. install your favorite EU Marketplace from safari and profit!
 - Credit to @leminlimez and @JJTech0130 for the exploit
+- [Pureios Discord server](https://discord.gg/25ub6jDj)
+- [Ash's support server:](https://discord.gg/s4HhtuJV)
  
 
 
