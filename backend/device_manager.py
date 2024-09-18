@@ -6,7 +6,7 @@ class DeviceManager:
         self.devices = []
         self.get_devices()
         if len(self.devices) != 0:
-            self.set_device(device=0)
+            self.set_device(0)
 
     def get_devices(self):
         self.devices.clear()
@@ -38,5 +38,8 @@ class DeviceManager:
         else:
             print(f"{len(self.devices)} device(s) found!")
     
-    def set_device(self, device=0):
-        self.device = self.devices[device]
+    def set_device(self, device):
+        if device != None:
+            self.device = self.devices[device]
+        else:
+            self.device = None

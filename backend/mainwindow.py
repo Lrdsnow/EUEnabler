@@ -56,14 +56,11 @@ class MainWindow(QMainWindow):
         self.EUText.move(0, 245)
         self.EUText.setAlignment(Qt.AlignCenter)
 
-        self.deviceText = QLabel("", self)
-        font.setBold(False)
-        font.setPointSize(16)
-        self.deviceText.setFont(font)
-        self.deviceText.setFixedSize(self.width(), 50)
-        self.deviceText.move(0, 275)
-        self.deviceText.setAlignment(Qt.AlignCenter)
-        self.deviceText.setText(self.dev_manager.device.get("name") if len(self.dev_manager.devices) != 0 else "No device connected!")
+        self.deviceComboBox = QComboBox(self)
+        self.deviceComboBox.setFixedSize(300, 40)
+        self.deviceComboBox.move((self.width() - self.deviceComboBox.width()) // 2, 295)
+        self.deviceComboBox.currentIndexChanged.connect(self.deviceChanged)
+        self.updateDeviceList()
 
         icon = QIcon()
         icon.addFile(u"icon/check-circle.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -74,9 +71,6 @@ class MainWindow(QMainWindow):
         "	background-color: transparent;\n"
         "	padding: 0px;\n"
         "   border: none;\n"
-        "}\n"
-        "QToolButton:pressed {\n"
-        "    opacity: 0.5;\n"
         "}")
         self.applyBtn.setIcon(icon)
         self.applyBtn.setIconSize(QSize(36, 36))
@@ -85,8 +79,26 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(self.main)
 
+    def updateDeviceList(self):
+        self.deviceComboBox.clear()
+
+        for idx, device in enumerate(self.dev_manager.devices):
+            self.deviceComboBox.addItem(f"  {device.get('name')}", idx)
+
+        if self.dev_manager.devices:
+            self.deviceComboBox.setCurrentIndex(0)
+
+    def deviceChanged(self, index):
+        selected_device = self.deviceComboBox.itemData(index)
+        self.dev_manager.set_device(selected_device)
+
     def logoBtn_callback(self):
         webbrowser.open("https://github.com/nightfallenxyz/EUEnabler-ASH")
 
     def applyBtn_callback(self):
         self.tweak.apply()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_R:
+            self.dev_manager.get_devices()
+            self.updateDeviceList()

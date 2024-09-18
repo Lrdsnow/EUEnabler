@@ -13,7 +13,6 @@ prompt_options = [
 ]
 
 dev_manager = DeviceManager()
-dev_manager.set_device(device=0)
 
-tweak = EUTweak(prompt(prompt_options))
-tweak.apply(lockdown=dev_manager.device.get("ld"))
+tweak = EUTweak()
+tweak.apply(dev_manager)
