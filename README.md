@@ -1,6 +1,8 @@
  # EU Enabler
 ### A Proof Of Concept EU Feature enabler for outside of the EU
 
+## DOES NOT WORK ON ANYTHING OTHER THEN IOS 17.4 OR IOS 17.4.1
+
 
 ## How to use
 1. ensure and install [python 3.12](https://www.python.org/downloads/release/python-3125/) and [git](https://git-scm.com/downloads) if you do not have it, and ensure they are both in path
